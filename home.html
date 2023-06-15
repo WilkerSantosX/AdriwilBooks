@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang=”pt-br”>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Adriwil Books | Home</title>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+		<link href="css/style.css" rel="stylesheet">
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/jquery.quick.pagination.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+				
+		<style>
+			p, h4 {
+				margin-left: 15px;
+				margin-right: 15px;
+				text-align: center;
+			}
+			
+			.form-group{
+				text-align: left;
+			}
+			
+			img{
+				height: 250px;
+			}
+			
+				li{
+				list-style-type: none;
+			}
+			
+			h1, h2,ul {
+				clear: both;
+			}
+
+			ul.pagination1 li:hover,
+			ul.pagination2 li:hover,
+			ul.pagination3 li:hover {
+				background-color: #FF9500;
+			}
+
+			ul.pagination1 li,
+			ul.pagination2 li,
+			ul.pagination3 li {
+				padding: 10px;
+				font-family: georgia;
+				background-color: #8890FC;
+				font-size: 24px;
+				color: #fff;
+				line-height: 1;
+				width: 600px;
+				margin-bottom: 1px;
+				list-style:none;
+			}
+
+			ul.red {
+				outline:10px solid red;
+			}
+
+			ul.simplePagerNav li{
+				display:block;
+				float: left;
+				padding: 10px;
+				margin-bottom: 10px;
+				font-family: georgia;
+				font-size:14px;
+			}
+
+			ul.simplePagerNav li a{
+				color: #333;
+				text-decoration: none;
+			}
+
+			li.currentPage {
+				background: red;
+				background: #FF9500;	
+			}
+
+			ul.simplePagerNav li.currentPage a {
+				color: #fff;	
+			}
+					
+		</style>
+	</head>
+	
+	<body>
+		<div class="container">
+		    <header class="row justify-content-center" style="background:black;"> 
+				<ul class="nav"> 
+					<li class="nav-item"> 
+						<a class="nav-link active" href="#">Olá, WILKER DO SANTOS</a> <a href="index.html">Sair</a> 
+					</li> 
+				</ul>		  
+		    </header> 
+		 		
+			<div class="row justify-content-center">			
+				<div class="col-lg-12">
+					<button type="button" id="aplicarFiltro" class="btn btn-info btn-lg btn-block">Aplicar Filtros</button>
+				</div>												
+			</div>
+															
+			<div class="row justify-content-center" id="filter" style="display:none">
+				
+				<div class="col-lg-2">
+					<label for="exampleInputPassword1">Pesquisar Livros por:</label>
+						<select class="custom-select" id="tipoPesquisa" style="width: 100%;">
+							<option value="Autor">Autor</option>
+							<option value="Categoria" selected>Categoria</option>
+							<option value="Titulo">Titulo</option>
+						</select>
+				</div>
+				
+				<div class="col-lg-3" id="SearchCategoria" style="display:block">
+					<label for="exampleInputPassword1">Selecione a Categoria:</label>
+					<select class="custom-select" style="width: 100%;">
+						<option value="AL">Romances</option>
+						<option value="WY">Contos</option>
+						<option value="WY">Lendas</option>
+						<option value="WY">Fábulas</option>
+						<option value="WY">Novelas</option>
+						<option value="WY">Crônicas</option>
+						<option value="WY">Diários</option>
+						<option value="WY">Relatos de viagem</option>
+						<option value="WY">Folhetos turísticos</option>
+						<option value="WY">Currículo</option>
+						<option value="WY">Biografia ou autobiografia</option>
+						<option value="WY">Classificados</option>
+						<option value="WY">Folhetos turísticos</option>
+						<option value="WY">Artigos de opinião</option>
+						<option value="WY">Sermões</option>
+					</select>
+				</div>
+						
+				<div class="col-lg-3" id="SearchAutor" style="display:none">
+					<div class="form-group">
+						<label for="exampleInputPassword1" style="text-align:left">Autor</label>
+						<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite o Autor">
+					</div>
+				</div>
+				<div class="col-lg-3" id="SearchTitulo" style="display:none">
+					<div class="form-group">
+						<label for="exampleInputPassword1" style="text-align:left">Título</label>
+						<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite o título">
+					</div>
+				</div>
+
+				<div class="col-lg-1" style="margin-top:20px">
+					<button type="button" class="btn btn-success">Pesquisar</button>
+				</div>
+												
+			</div>
+				
+			<div class="row justify-content-center">
+				<div class="col-lg-12">
+					<button type="button" id="fazerUpload" class="btn btn-primary btn-lg btn-block">Fazer Upload</button>
+				</div>												
+			</div>
+				
+			<div class="row justify-content-center" id="upload" style="display:none">
+				<div class="col-lg-3" id="">
+					<div class="form-group">
+						<label for="exampleInputPassword1" style="text-align:left">Título</label>
+						<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Dê o título para o documento">
+					</div>
+				</div>
+				<div class="col-lg-3" id="">
+					<div class="form-group">
+						<label for="exampleInputPassword1" style="text-align:left">Autor</label>
+						<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Informe o autor do documento">
+					</div>
+				</div>
+				<div class="form-group col-lg-3">
+					<label for="exampleFormControlFile1">Escolha o material</label>
+					<input type="file" class="form-control-file" id="exampleFormControlFile1">
+				</div>
+				<div class="col-lg-1" style="margin-top:20px">
+					<button type="button" class="btn btn-success">Enviar</button>
+				</div>											
+			</div>
+				
+			<hr style="background:green">
+				  
+			<div class="row">
+				<div class="col-lg-12">
+					<h4>Sua Estante | 2.101 Arquivos</h4>
+					<h5>Gêneros: Artigos, Poesias, Didáticos </h4>
+				</div>
+			</div>
+					
+			<div class="row">	
+				<ul class="class=list-group row" id="pagination1">					
+					<li class="col-xs-12 col-md-4 thumbnail text-center">
+						<figure>
+							<img src="https://d1pkzhm5uq4mnt.cloudfront.net/imagens/capas/_6e32795fcc74dde61b72132106ba3f35fb731833.jpg" alt="Titulo"/>
+							<div>
+								<h6>A Menina que Roubava Livros - Markus Zubak</h6>
+								<a href="" class="btn btn-success">Download</a>
+							</div>
+						</figure>
+					</li>
+					<li class="col-xs-12 col-md-4 thumbnail text-center">
+						<figure>
+							<img src="https://img.travessa.com.br/livro/BA/89/8909e610-745e-4ff1-8b26-1c062475bebf.jpg" alt="Titulo"/>
+							<div>
+								<h6>Olhai os lirios do campo - Erico Verissimo</h6>
+								<a href="" class="btn btn-success">Download</a>
+							</div>
+						</figure>
+					</li>
+					<li class="col-xs-12 col-md-4 thumbnail text-center">
+						<figure>
+							<img src="http://www.euvosescrevi.com.br/wp-content/uploads/2015/02/herois-da-fe-400x500.jpg" alt="Titulo"/>
+							<div>
+								<h6>Heróis da Fé - Orlando Boyer</h6>
+								<a href="" class="btn btn-success">Download</a>
+							</div>
+						</figure>
+					</li>
+					<li class="col-xs-12 col-md-4 thumbnail text-center">
+						<figure>
+							<img src="https://images-americanas.b2w.io/produtos/01/00/item/115459/8/115459815SZ.jpg" alt="Titulo"/>
+							<div>
+								<h6>Freud em diálogos: A psicanálise em Poesia - Márcio Martins</h6>
+								<a href="" class="btn btn-success">Download</a>
+							</div>
+						</figure>
+					</li>
+					<li class="col-xs-12 col-md-4 thumbnail text-center">
+						<figure>
+							<img src="https://m.media-amazon.com/images/I/41Laz2CTpWL._SY344_BO1,204,203,200_QL70_ML2_.jpg" alt="Titulo"/>
+							<div>
+								<h6>A Hora da Estrela - Clarice Lispector</h6>
+								<a href="" class="btn btn-success">Download</a>
+							</div>
+						</figure>
+					</li>
+					<li class="col-xs-12 col-md-4 thumbnail text-center">
+						<figure>
+							<img src="https://m.media-amazon.com/images/I/51TMgBQgCpL.jpg" alt="Titulo"/>
+							<div>
+								<h6>God of War - J.M Barlog</h6>
+								<a href="" class="btn btn-success">Download</a>
+							</div>
+						</figure>
+					</li>
+					<li class="col-xs-12 col-md-4 thumbnail text-center">
+						<figure>
+							<img src="https://img.travessa.com.br/livro/BA/89/8909e610-745e-4ff1-8b26-1c062475bebf.jpg" alt="Titulo"/>
+							<div>
+								<h6>Olhai os lirios do campo - Erico Verissimo</h6>
+								<a href="" class="btn btn-success">Download</a>
+							</div>
+						</figure>
+					</li>
+					<li class="col-xs-12 col-md-4 thumbnail text-center">
+						<figure>
+							<img src="http://www.euvosescrevi.com.br/wp-content/uploads/2015/02/herois-da-fe-400x500.jpg" alt="Titulo"/>
+							<div>
+								<h6>Heróis da Fé - Orlando Boyer</h6>
+								<a href="" class="btn btn-success">Download</a>
+							</div>
+						</figure>
+					</li>
+					<li class="col-xs-12 col-md-4 thumbnail text-center">
+						<figure>
+							<img src="https://images-americanas.b2w.io/produtos/01/00/item/115459/8/115459815SZ.jpg" alt="Titulo"/>
+							<div>
+								<h6>Freud em diálogos: A psicanálise em Poesia - Márcio Martins</h6>
+								<a href="" class="btn btn-success">Download</a>
+							</div>
+						</figure>
+					</li>				
+				</ul>
+			</div>
+									 		   		   
+		    <footer class="row justify-content-center">	
+				<p>@Development by Adriwil Studio</p>
+			</footer>
+		</div>
+		
+		<script>
+			$(document).ready(function() {
+							
+				$("#pagination1").quickPagination({pagerLocation:"both",pageSize:"9"});
+				
+				$('#aplicarFiltro').click(function(){
+				$('#filter').toggle();
+				});
+				
+				$('#fazerUpload').click(function(){
+				$('#upload').toggle();
+				});
+				
+				$('#tipoPesquisa').change(function () {
+
+					var value = $(this)['0']['value'];
+
+					if (value == "Autor") {
+						$('#SearchCategoria').hide();
+						$('#SearchTitulo').hide();
+						$('#SearchAutor').show();
+					} else if (value == "Titulo") {
+						$('#SearchCategoria').hide();
+						$('#SearchAutor').hide();
+						$('#SearchTitulo').show();
+					} else if (value == "Categoria") {
+						$('#SearchAutor').hide();
+						$('#SearchTitulo').hide();
+						$('#SearchCategoria').show();
+					}
+				});
+						
+			});				
+		</script>
+	</body>
+</html>
